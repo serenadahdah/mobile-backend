@@ -40,7 +40,7 @@ const Form = mongoose.Schema({
         required: true
     },
     AgeClient: {
-        type: [ClientAge],
+        type: ClientAge,
         required: true
     }
 });

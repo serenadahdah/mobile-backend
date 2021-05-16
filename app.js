@@ -26,6 +26,7 @@ const formsRoute = require('./routes/form');
 const psychologistsRoute = require('./routes/psy');
 const registerPsy = require('./routes/registerPsy');
 
+
 // define base endpoints
 app.use('/api/', authUsers);
 app.use('/api/psy/form', verify, formsRoute);

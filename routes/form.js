@@ -23,11 +23,12 @@ router.get('/:psyId', async (req, res) => {
 
 router.post('/', async (req,res) => {
 
-    const formExist = await Form.findOne({psyId: req.user.id});
+    console.log(req.user);
+    const formExist = await Form.findOne({psyId: req.user._id});
     if(formExist) return res.status(400).send();
 
     const form = new Form({
-        psyId: req.user.id,
+        psyId: req.user._id,
         sex: req.body.sex,
         age: req.body.age,
         address: req.body.address,
@@ -45,10 +46,10 @@ router.post('/', async (req,res) => {
 
 router.put('/', async (req, res) => {
     try{
-        const form = await Form.findOne({ _id: req.user.id});
+        const form = await Form.findOne({ _id: req.user._id});
         if(!form) return res.status(404).send();
 
-        const updatedForm = await Form.updateOne({ _id: req.user.id }, {
+        const updatedForm = await Form.updateOne({ _id: req.user._id }, {
             $set: {
                 sex: req.body.sex,
                 age: req.body.age,

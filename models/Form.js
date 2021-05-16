@@ -11,6 +11,13 @@ const ClientAge = mongoose.Schema({
     }
 });
 
+ClientAge.methods.toJSON = function() {
+    var obj = this.toObject();
+    delete obj._id;
+    return obj;
+}
+
+
 const Form = mongoose.Schema({
     psyId: {
         type: String,
@@ -37,6 +44,12 @@ const Form = mongoose.Schema({
         required: true
     }
 });
+
+Form.methods.toJSON = function() {
+    var obj = this.toObject();
+    delete obj.__v;
+    return obj;
+}
 
 
 module.exports = mongoose.model('psychologistForm', Form);

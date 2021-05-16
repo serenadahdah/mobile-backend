@@ -46,10 +46,10 @@ router.post('/', async (req,res) => {
 
 router.put('/', async (req, res) => {
     try{
-        const form = await Form.findOne({ _id: req.user._id});
+        const form = await Form.findOne({ psyId: req.user._id});
         if(!form) return res.status(404).send();
 
-        const updatedForm = await Form.updateOne({ _id: req.user._id }, {
+        const updatedForm = await Form.updateOne({ psyId: req.user._id }, {
             $set: {
                 sex: req.body.sex,
                 age: req.body.age,
